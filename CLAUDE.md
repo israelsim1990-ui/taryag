@@ -7,12 +7,12 @@
 | Mission 01 | Project setup and DB schema | DONE |
 | Mission 02 | Auth and user management | DONE |
 | Mission 03 | Mitzvot catalog | DONE |
-| Mission 04 | Real-time tracking | TODO |
+| Mission 04 | Real-time tracking | DONE |
 | Mission 05 | UI/UX | TODO |
 
 ## Current Session
-- Last completed: Mission 03 (613 mitzvot seed data inserted into public.mitzvot)
-- - Next mission: Mission 04
+- Last completed: Mission 04 (Realtime enabled, log_mitzvah/unlog_mitzvah functions, stats views)
+- - Next mission: Mission 05
  
   - ## Rules for Claude Code
   - - Do ONE mission per session only
