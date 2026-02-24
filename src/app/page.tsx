@@ -38,9 +38,9 @@ export default function HomePage() {
       supabase.rpc('get_my_stats')
     ])
 
-    if (mitzvotRes.data) setMitzvot(mitzvotRes.data)
+    if (mitzvotRes.data) setMitzvot(mitzvotRes.data as Mitzvah[])
     if (logRes.data) setFulfilledIds(new Set(logRes.data.map((r: any) => r.mitzvah_id)))
-    if (statsRes.data?.[0]) setStats(statsRes.data[0])
+    if (statsRes.data?.[0]) setStats(statsRes.data[0] as UserStats)
   }
 
   const handleSignIn = async () => {
@@ -72,7 +72,7 @@ export default function HomePage() {
 
   const filteredMitzvot = mitzvot.filter(m => {
     const matchesFilter = filter === 'all' || m.category === filter
-    const matchesSearch = !search || m.name_hebrew.includes(search) || m.name_english.toLowerCase().includes(search.toLowerCase())
+    const matchesSearch = !search || m.name_he.includes(search) || m.name_en.toLowerCase().includes(search.toLowerCase())
     return matchesFilter && matchesSearch
   })
 
@@ -84,7 +84,7 @@ export default function HomePage() {
 
   if (!user) return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-blue-950 text-white gap-6">
-      <h1 className="text-5xl font-bold">תרי"ג מצוות</h1>
+      <h1 className="text-5xl font-bold">תרי&quot;ג מצוות</h1>
       <p className="text-xl text-blue-200">Track your mitzvot fulfillment in real-time</p>
       <button
         onClick={handleSignIn}
@@ -98,7 +98,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-blue-950 text-white" dir="rtl">
       <header className="sticky top-0 z-10 bg-blue-900 shadow-lg px-6 py-4 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">תרי"ג מצוות</h1>
+        <h1 className="text-2xl font-bold">תרי&quot;ג מצוות</h1>
         <div className="flex items-center gap-4">
           <span className="text-blue-300 text-sm">{user.email}</span>
           <button
@@ -126,8 +126,8 @@ export default function HomePage() {
               <div className="text-xs text-blue-300">מצוות לא תעשה</div>
             </div>
             <div className="bg-blue-900 rounded-xl p-4 text-center">
-              <div className="text-3xl font-bold text-blue-300">{stats.total_log_entries}</div>
-              <div className="text-xs text-blue-300">סה"כ רשומות</div>
+              <div className="text-3xl font-bold text-blue-300">{stats.total_fulfillments}</div>
+              <div className="text-xs text-blue-300">סה&quot;כ רשומות</div>
             </div>
           </div>
         )}
@@ -170,10 +170,10 @@ export default function HomePage() {
                     {m.category === 'positive' ? 'עשה' : 'לא תעשה'}
                   </span>
                 </div>
-                <p className="text-sm font-semibold mt-2 text-right leading-snug">{m.name_hebrew}</p>
-                <p className="text-xs text-blue-300 mt-1 text-right leading-snug">{m.name_english}</p>
+                <p className="text-sm font-semibold mt-2 text-right leading-snug">{m.name_he}</p>
+                <p className="text-xs text-blue-300 mt-1 text-right leading-snug">{m.name_en}</p>
                 {isFulfilled && (
-                  <div className="mt-2 text-green-400 text-xs text-center">✓ קיימתי</div>
+                  <div className="mt-2 text-green-400 text-xs text-center">&#10003; קיימתי</div>
                 )}
               </div>
             )
