@@ -8,16 +8,18 @@
 | Mission 02 | Auth and user management | DONE |
 | Mission 03 | Mitzvot catalog | DONE |
 | Mission 04 | Real-time tracking | DONE |
-| Mission 05 | UI/UX | TODO |
+| Mission 05 | UI/UX | DONE |
 
-## Current Session
-- Last completed: Mission 04 (Realtime enabled, log_mitzvah/unlog_mitzvah functions, stats views)
-- - Next mission: Mission 05
- 
-  - ## Rules for Claude Code
-  - - Do ONE mission per session only
-    - - Commit after each mission
-      - - Update this file after each mission
-        - - Read docs/ before starting any mission
-          - - Use ON CONFLICT (number) DO NOTHING in INSERT statements
-            - - Insert seed data in batches of 50 rows
+## ALL MISSIONS COMPLETE!
+
+The Taryag app is fully built:
+- Supabase DB with 613 mitzvot seeded
+- - Auth, RLS, real-time enabled
+  - - Next.js 14 frontend with Tailwind CSS
+    - - Deploy to Vercel: connect GitHub repo, add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY env vars
+     
+      - ## Rules for Claude Code
+      - - Do ONE mission per session only
+        - - Commit after each mission
+          - - Update this file after each mission
+            - - Read docs/ before starting any mission
